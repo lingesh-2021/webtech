@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class Selector Example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1 class="title">Welcome to My Web Page</h1>
+
+    <div class="section">
+        <h2 class="heading">About Us</h2>
+        <p class="content">
+            This section contains information about the organization.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 class="heading">Services</h2>
+        <p class="content">
+            We provide web development and software solutions.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 class="heading">Contact</h2>
+        <p class="content">
+            Email: info@example.com <br>
+            Phone: 9876543210
+        </p>
+    </div>
+
+    <footer class="footer">
+        © 2025 My Website
+    </footer>
+
+</body>
+</html>
