@@ -1,0 +1,61 @@
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creative Frameset Layout</title>
+</head>
+
+<frameset rows="15%,70%,15%" border="5" bordercolor="#333">
+
+    <!-- Header -->
+    <frame src="header.html" name="header">
+
+    <!-- Middle section -->
+    <frameset cols="25%,75%">
+        <frame src="menu.html" name="menu">
+        <frame src="content.html" name="content">
+    </frameset>
+
+    <!-- Footer -->
+    <frame src="footer.html" name="footer">
+
+</frameset>
+</html>
+ header.html
+ <!DOCTYPE html>
+<html>
+<body style="margin:0; background:linear-gradient(to right,#1e3c72,#2a5298); color:white; text-align:center; font-family:Arial;">
+    <h1>🌐 My Creative Frameset Website</h1>
+    <p>Learning HTML Frameset</p>
+</body>
+</html>
+ menu.html
+ <!DOCTYPE html>
+<html>
+<body style="background:#111; color:white; font-family:Arial;">
+    <h2 style="text-align:center;">📌 Menu</h2>
+    <ul style="list-style:none; padding:10px;">
+        <li><a href="content.html" target="content" style="color:cyan;">🏠 Home</a></li><br>
+        <li><a href="content.html" target="content" style="color:lime;">📘 Courses</a></li><br>
+        <li><a href="content.html" target="content" style="color:orange;">🧠 Projects</a></li><br>
+        <li><a href="content.html" target="content" style="color:pink;">📞 Contact</a></li>
+    </ul>
+</body>
+</html>
+ content.html
+<!DOCTYPE html>
+<html>
+<body style="background:#f4f4f4; font-family:Arial; padding:20px;">
+    <h2>✨ Welcome</h2>
+    <p>
+        This web page is divided into multiple frames using the 
+        <b>frameset</b> tag instead of the body tag.
+    </p>
+    <p>
+        Frames allow different sections of a webpage to load independently.
+    </p>
+    <p style="color:#555;">
+        ⚠ Note: Frameset is deprecated in HTML5 but still used for academic purposes.
+    </p>
+</body>
+</html>
