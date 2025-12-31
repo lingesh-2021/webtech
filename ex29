@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👔 Employee Registration - HTML + JavaScript</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: rgba(255,255,255,0.95); 
+            padding: 40px; 
+            border-radius: 25px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        h1 { 
+            text-align: center; 
+            color: #2c3e50; 
+            margin-bottom: 30px; 
+            font-size: 2.8em;
+        }
+        .form-section, .display-section { 
+            background: #f8f9fa; 
+            padding: 30px; 
+            border-radius: 20px; 
+            margin: 20px 0; 
+            border-left: 6px solid #3498db;
+        }
+        .form-group { margin-bottom: 25px; }
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            color: #34495e; 
+            font-size: 1.1em;
+        }
+        input, select, textarea { 
+            width: 100%; 
+            padding: 15px; 
+            border: 2px solid #e1e8ed; 
+            border-radius: 12px; 
+            font-size: 16px; 
+            transition: all 0.3s;
+        }
+        input:focus, select:focus, textarea:focus { 
+            outline: none; 
+            border-color: #667eea; 
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+        .radio-group { display: flex; gap: 25px; flex-wrap: wrap; }
+        .radio-item { display: flex; align-items: center; gap: 10px; }
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 15px; 
+            margin-top: 10px;
+        }
+        .skill-item { display: flex; align-items: center; gap: 10px; }
+        .skill-item input[type="checkbox"] { transform: scale(1.3); }
+        .submit-btn { 
+            background: linear-gradient(45deg, #27ae60, #2ecc71); 
+            color: white; 
+            border: none; 
+            padding: 18px 50px; 
+            border-radius: 50px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            width: 100%; 
+            transition: all 0.3s;
+        }
+        .submit-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 15px 35px rgba(39,174,96,0.4);
+        }
+        .employee-card { 
+            background: linear-gradient(135deg, #e8f5e8, #d4edda); 
+            padding: 30px; 
+            border-radius: 20px; 
+            margin: 20px 0; 
+            border-left: 6px solid #27ae60;
+        }
+        .field-row { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 0; 
+            border-bottom: 1px solid #dee2e6; 
+        }
+        .field-row:last-child { border-bottom: none; }
+        .field-label { font-weight: 700; color: #2c3e50; font-size: 1.1em; min-width: 180px; }
+        .field-value { color: #495057; font-size: 1.1em; flex: 1; padding-left: 20px; }
+        .skills-list { 
+            background: #d1ecf1; 
+            padding: 15px; 
+            border-radius: 10px; 
+            margin: 10px 0; 
+        }
+        .btn { 
+            background: #3498db; 
+            color: white; 
+            padding: 15px 30px; 
+            border: none; 
+            border-radius: 25px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            display: inline-block; 
+            margin: 10px; 
+            transition: all 0.3s;
+        }
+        .btn:hover { 
+            background: #2980b9; 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 25px rgba(52,152,219,0.4);
+        }
+        .success-msg { 
+            background: #d4edda; 
+            color: #155724; 
+            padding: 20px; 
+            border-radius: 15px; 
+            border-left: 6px solid #28a745; 
+            margin: 20px 0; 
+            font-size: 1.2em;
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👔 Employee Registration Portal</h1>
+        <p style="text-align: center; color: #7f8c8d; margin-bottom: 30px;">HR Database Management System</p>
+        
+        <!-- FORM SECTION -->
+        <div class="form-section" id="formSection">
+            <h2>📝 Register New Employee</h2>
+            <form id="employeeForm">
+                <div class="form-group">
+                    <label>🆔 Employee ID *</label>
+                    <input type="text" id="employeeId" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>👤 Full Name *</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label>📧 Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>📱 Phone</label>
+                        <input type="tel" id="phone">
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label>🏢 Department *</label>
+                        <select id="department" required>
+                            <option value="">Select Department</option>
+                            <option value="IT">IT</option>
+                            <option value="HR">HR</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Operations">Operations</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🎖️ Designation *</label>
+                        <select id="designation" required>
+                            <option value="">Select Designation</option>
+                            <option value="Software Engineer">Software Engineer</option>
+                            <option value="Manager">Manager</option>
+                            <option value="HR Executive">HR Executive</option>
+                            <option value="Accountant">Accountant</option>
+                            <option value="Marketing Executive">Marketing Executive</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>📅 Joining Date</label>
+                    <input type="date" id="joiningDate">
+                </div>
+                
+                <div class="form-group">
+                    <label>⚤ Gender *</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="gender" value="Male" id="male" required> 
+                            <label for="male">Male</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="gender" value="Female" id="female" required> 
+                            <label for="female">Female</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="gender" value="Other" id="other" required> 
+                            <label for="other">Other</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>💻 Technical Skills</label>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <input type="checkbox" name="skills" value="Java"> 
+                            <label>Java</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" name="skills" value="Python"> 
+                            <label>Python</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" name="skills" value="JavaScript"> 
+                            <label>JavaScript</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" name="skills" value="React"> 
+                            <label>React</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" name="skills" value="SQL"> 
+                            <label>SQL</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" name="skills" value="AWS"> 
+                            <label>AWS</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>🏠 Address</label>
+                    <textarea id="address" rows="4" placeholder="Enter complete address"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">✅ Submit Employee Data</button>
+            </form>
+        </div>
+        
+        <!-- DISPLAY SECTION (Hidden Initially) -->
+        <div class="display-section hidden" id="displaySection">
+            <h2>✅ Employee Registration Successful!</h2>
+            <div class="success-msg" id="successMsg">
+                🎉 Employee <strong id="displayName"></strong> registered successfully!
+            </div>
+            
+            <div class="employee-card">
+                <h3 style="color: #27ae60; margin-bottom: 25px;">📋 Collected Employee Data</h3>
+                
+                <div class="field-row">
+                    <span class="field-label">🆔 Employee ID:</span>
+                    <span class="field-value" id="displayEmpId"></span>
+                </div>
+                
+                <div class="field-row">
+                    <span class="field-label">👤 Full Name:</span>
+                    <span class="field-value" id="displayFullName"></span>
+                </div>
+                
+                <div class="field-row">
+                    <span class="field-label">📧 Email:</span>
+                    <span class="field-value" id="displayEmail"></span>
+                </div>
+                
+                <div class="field-row">
+                    <span class="field-label">📱 Phone:</span>
+                    <span class="field-value" id="displayPhone"></span>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="field-row">
+                        <span class="field-label">🏢 Department:</span>
+                        <span class="field-value" id="displayDept"></span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">🎖️ Designation:</span>
+                        <span class="field-value" id="displayDesignation"></span>
+                    </div>
+                </div>
+                
+                <div class="field-row">
+                    <span class="field-label">📅 Joining Date:</span>
+                    <span class="field-value" id="displayJoinDate"></span>
+                </div>
+                
+                <div class="field-row">
+                    <span class="field-label">⚤ Gender:</span>
+                    <span class="field-value" id="displayGender"></span>
+                </div>
+                
+                <div class="field-row">
+                    <span class="field-label">💻 Skills:</span>
+                    <div class="field-value skills-list" id="displaySkills"></div>
+                </div>
+                
+                <div class="field-row">
+                    <span class="field-label">🏠 Address:</span>
+                    <span class="field-value" id="displayAddress"></span>
+                </div>
+                
+                <div class="field-row">
+                    <span class="field-label">📊 Registration Time:</span>
+                    <span class="field-value" id="displayTime"></span>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn" onclick="resetForm()">🔄 Register New Employee</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('employeeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const employeeId = document.getElementById('employeeId').value;
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value || 'Not provided';
+            const department = document.getElementById('department').value;
+            const designation = document.getElementById('designation').value;
+            const joiningDate = document.getElementById('joiningDate').value || 'Not provided';
+            const gender = document.querySelector('input[name="gender"]:checked')?.value || 'Not selected';
+            
+            // Collect skills
+            const skillsCheckboxes = document.querySelectorAll('input[name="skills"]:checked');
+            const skills = Array.from(skillsCheckboxes).map(cb => cb.value);
+            
+            const address = document.getElementById('address').value || 'Not provided';
+            const registerTime = new Date().toLocaleString();
+            
+            // Display data
+            document.getElementById('displayEmpId').textContent = employeeId;
+            document.getElementById('displayFullName').textContent = fullName;
+            document.getElementById('displayEmail').textContent = email;
+            document.getElementById('displayPhone').textContent = phone;
+            document.getElementById('displayDept').textContent = department;
+            document.getElementById('displayDesignation').textContent = designation;
+            document.getElementById('displayJoinDate').textContent = joiningDate;
+            document.getElementById('displayGender').textContent = gender;
+            document.getElementById('displayName').textContent = fullName;
+            document.getElementById('displayAddress').textContent = address;
+            document.getElementById('displayTime').textContent = registerTime;
+            
+            // Display skills
+            const skillsDiv = document.getElementById('displaySkills');
+            if (skills.length > 0) {
+                skillsDiv.innerHTML = skills.map(skill => 
+                    `<span style="background:#cce7ff;padding:6px 12px;margin:4px;border-radius:20px;font-size:0.95em;display:inline-block;">• ${skill}</span>`
+                ).join('');
+            } else {
+                skillsDiv.innerHTML = 'None selected';
+            }
+            
+            // Show display section, hide form
+            document.getElementById('formSection').classList.add('hidden');
+            document.getElementById('displaySection').classList.remove('hidden');
+            
+            // Scroll to display section
+            document.getElementById('displaySection').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        function resetForm() {
+            document.getElementById('employeeForm').reset();
+            document.getElementById('displaySection').classList.add('hidden');
+            document.getElementById('formSection').classList.remove('hidden');
+            document.getElementById('formSection').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
