@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Picture Slider with Radio Buttons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f0f0;
+    }
+
+    .slider {
+      width: 600px;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .slides {
+      display: flex;
+      width: 500%;
+      height: 100%;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .slides img {
+      width: 600px;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /* Radio buttons hidden */
+    input[type=radio] {
+      display: none;
+    }
+
+    /* Navigation dots */
+    .navigation {
+      position: absolute;
+      width: 100%;
+      bottom: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .bar {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    input:checked + .bar {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <!-- Radio buttons -->
+    <input type="radio" name="radio-btn" id="radio1" checked>
+    <input type="radio" name="radio-btn" id="radio2">
+    <input type="radio" name="radio-btn" id="radio3">
+    <input type="radio" name="radio-btn" id="radio4">
+
+    <!-- Slides -->
+    <div class="slides" id="slides">
+      <img src="https://picsum.photos/id/1015/600/400" alt="Slide 1">
+      <img src="https://picsum.photos/id/1016/600/400" alt="Slide 2">
+      <img src="https://picsum.photos/id/1018/600/400" alt="Slide 3">
+      <img src="https://picsum.photos/id/1020/600/400" alt="Slide 4">
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+      <label for="radio1" class="bar"></label>
+      <label for="radio2" class="bar"></label>
+      <label for="radio3" class="bar"></label>
+      <label for="radio4" class="bar"></label>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.getElementById('slides');
+    const radios = document.querySelectorAll('input[name="radio-btn"]');
+
+    radios.forEach((radio, index) => {
+      radio.addEventListener('change', () => {
+        slides.style.transform = `translateX(-${index * 600}px)`;
+      });
+    });
+
+    // Optional: Auto-play effect
+    let counter = 0;
+    setInterval(() => {
+      counter = (counter + 1) % radios.length;
+      radios[counter].checked = true;
+      slides.style.transform = `translateX(-${counter * 600}px)`;
+    }, 4000);
+  </script>
+</body>
+</html>
