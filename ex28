@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌈 Background Image - Internal CSS (Style Tag)</title>
+    
+    <!-- INTERNAL CSS using STYLE TAG -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* HERO SECTION - Full Screen Background Image */
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 60px 40px;
+            border-radius: 25px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* CONTENT SECTIONS WITH DIFFERENT BACKGROUND IMAGES */
+        .content-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-1 {
+            background-image: url('https://images.unsplash.com/photo-1557672172-298e090bd0f5?w=1400&q=85');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            color: white;
+            position: relative;
+        }
+        
+        .section-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(102, 126, 234, 0.7);
+            z-index: 1;
+        }
+        
+        .section-1 > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-2 {
+            background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?w=1400&q=85');
+            background-size: 120%;
+            background-position: right center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+        
+        .section-3 {
+            background-image: linear-gradient(45deg, rgba(255, 107, 107, 0.8), rgba(254, 202, 87, 0.8)),
+                              url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1400&q=85');
+            background-size: cover, cover;
+            background-position: center, center;
+            background-blend-mode: overlay;
+            padding: 60px 20px;
+        }
+        
+        /* DEMO GRID WITH MULTIPLE BACKGROUND IMAGES */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 60px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .demo-box {
+            height: 350px;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.6em;
+            font-weight: bold;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .demo-box:hover {
+            transform: translateY(-15px) scale(1.02);
+        }
+        
+        .demo-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+        
+        /* INDIVIDUAL BACKGROUND IMAGES FOR DEMO BOXES */
+        .box-1 {
+            background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=85');
+            background-size: cover;
+            background-position: center;
+            animation: slideBg 15s infinite;
+        }
+        
+        .box-2 {
+            background-image: url('https://images.unsplash.com/photo-1541795795328-f0739717e7e9?w=800&q=85');
+            background-size: cover;
+            background-position: left center;
+        }
+        
+        .box-3 {
+            background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=85');
+            background-size: 130%;
+            background-position: center bottom;
+        }
+        
+        .box-4 {
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85');
+            background-size: cover;
+            background-position: top right;
+            background-attachment: fixed;
+        }
+        
+        /* TYPOGRAPHY & LAYOUT */
+        h1 { font-size: 4em; margin-bottom: 20px; text-shadow: 3px 3px 15px rgba(0,0,0,0.7); }
+        h2 { font-size: 2.8em; margin-bottom: 25px; text-align: center; color: #2c3e50; }
+        p { font-size: 1.3em; line-height: 1.8; margin-bottom: 25px; }
+        .highlight { 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 25px; 
+            border-radius: 15px; 
+            font-family: monospace; 
+            font-size: 1.1em; 
+            margin: 20px 0;
+        }
+        
+        /* ANIMATIONS */
+        @keyframes slideBg {
+            0%, 100% { background-position: center; }
+            50% { background-position: left top; }
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hero-section { background-attachment: scroll; }
+            h1 { font-size: 2.5em; }
+            .demo-grid { grid-template-columns: 1fr; padding: 30px 10px; }
+            .demo-box { height: 280px; font-size: 1.3em; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <div class="hero-section">
+        <div class="hero-overlay">
+            <h1>🌟 Background Image Demo</h1>
+            <p style="font-size: 1.4em;">Using <strong>INTERNAL CSS (style tag)</strong> with URL Background Images</p>
+            <div class="highlight">
+                background-image: url('Unsplash URL')<br>
+                background-size: cover | contain<br>
+                background-position: center | top | bottom<br>
+                background-attachment: fixed | scroll
+            </div>
+        </div>
+    </div>
+    
+    <!-- CONTENT SECTIONS -->
+    <section class="content-section section-1">
+        <h2>🎨 Section 1 - Overlay Background</h2>
+        <p>Multiple background layers with pseudo-element overlay. High-quality Unsplash images optimized for web.</p>
+    </section>
+    
+    <section class="content-section section-2">
+        <h2 style="color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.8);">🏙️ Section 2 - Right-Aligned Background</h2>
+        <p style="color: white; font-size: 1.2em; max-width: 600px; margin: 0 auto;">background-position: right center creates dynamic visual flow.</p>
+    </section>
+    
+    <section class="content-section section-3">
+        <h2>🌊 Section 3 - Gradient Overlay</h2>
+        <p>Combining <code>linear-gradient()</code> with background-image using blend-mode for perfect text readability.</p>
+    </section>
+    
+    <!-- DEMO GRID -->
+    <div class="demo-grid">
+        <div class="demo-box box-1">
+            🏞️ Nature Landscape<br>
+            <small>Animated Background</small>
+        </div>
+        <div class="demo-box box-2">
+            🎨 Watercolor Art<br>
+            <small>Left-Center Position</small>
+        </div>
+        <div class="demo-box box-3">
+            🔺 Geometric Pattern<br>
+            <small>130% Size Effect</small>
+        </div>
+        <div class="demo-box box-4">
+            ✈️ Sky View<br>
+            <small>Fixed Attachment</small>
+        </div>
+    </div>
+</body>
+</html>
