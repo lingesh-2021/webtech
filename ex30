@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🌟 Ultimate Animated Web Page - Harithi</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background: linear-gradient(135deg,#667eea,#764ba2,#f093fb,#f5576c,#4facfe);
+    background-size:500% 500%;
+    animation:bgAnim 15s ease infinite;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+@keyframes bgAnim{
+    0%{background-position:0% 50%;}
+    25%{background-position:100% 0%;}
+    50%{background-position:100% 100%;}
+    75%{background-position:0% 100%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Floating Particles */
+.particles{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:1;
+}
+
+.particle{
+    position:absolute;
+    border-radius:50%;
+    background:linear-gradient(45deg,#fff,#00d4ff);
+    animation:particleFloat 20s linear infinite;
+    box-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+.particle:nth-child(1){width:12px;height:12px;left:10%;animation-delay:0s;}
+.particle:nth-child(2){width:8px;height:8px;left:25%;animation-delay:5s;}
+.particle:nth-child(3){width:16px;height:16px;left:70%;animation-delay:10s;}
+.particle:nth-child(4){width:10px;height:10px;left:85%;animation-delay:15s;}
+
+@keyframes particleFloat{
+    0%{transform:translateY(100vh) scale(0);opacity:0;}
+    10%{opacity:1;}
+    90%{opacity:1;}
+    100%{transform:translateY(-20vh) scale(1) rotate(360deg);opacity:0;}
+}
+
+/* Header */
+header{
+    text-align:center;
+    padding:80px 20px;
+    position:relative;
+    z-index:10;
+    animation:slideDown 2s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+header h1{
+    font-size:clamp(3rem,8vw,5rem);
+    background:linear-gradient(45deg,#fff,#00d4ff,#fff);
+    background-size:300% 300%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    animation:textRainbow 8s ease infinite, glowPulse 3s ease-in-out infinite alternate;
+    text-shadow:0 0 40px rgba(255,255,255,0.8);
+    margin-bottom:1rem;
+}
+
+header p{
+    font-size:1.4rem;
+    opacity:0.92;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.1);
+    padding:1rem 2rem;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,0.2);
+    display:inline-block;
+    animation:fadeInUp 2s ease 0.5s both;
+}
+
+@keyframes slideDown{
+    from{opacity:0;transform:translateY(-60px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes textRainbow{
+    0%,100%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+}
+
+@keyframes glowPulse{
+    from{filter:drop-shadow(0 0 20px rgba(255,255,255,0.8));}
+    to{filter:drop-shadow(0 0 40px rgba(0,212,255,0.8));}
+}
+
+@keyframes fadeInUp{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+/* Hero Image */
+.hero{
+    display:flex;
+    justify-content:center;
+    margin:50px 0;
+    position:relative;
+    z-index:10;
+}
+
+.hero img{
+    width:75%;
+    max-width:650px;
+    border-radius:30px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.5);
+    backdrop-filter:blur(20px);
+    border:3px solid rgba(255,255,255,0.3);
+    animation:heroZoom 3s cubic-bezier(0.25,0.46,0.45,0.94);
+    transition:all 0.5s ease;
+}
+
+.hero img:hover{
+    transform:scale(1.05) rotate(2deg);
+    box-shadow:0 40px 80px rgba(0,0,0,0.6);
+    border-color:rgba(0,212,255,0.8);
+}
+
+@keyframes heroZoom{
+    from{transform:scale(0.5) rotate(-5deg);opacity:0;}
+    to{transform:scale(1) rotate(0deg);opacity:1;}
+}
+
+/* Cards */
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:40px;
+    max-width:1400px;
+    margin:0 auto;
+    padding:60px 20px;
+    position:relative;
+    z-index:10;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(25px);
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    transition:all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    animation:cardSlide 1.2s ease forwards;
+    border:1px solid rgba(255,255,255,0.2);
+    position:relative;
+}
+
+.card:nth-child(1){animation-delay:0.3s;}
+.card:nth-child(2){animation-delay:0.6s;}
+.card:nth-child(3){animation-delay:0.9s;}
+.card:nth-child(4){animation-delay:1.2s;}
+
+@keyframes cardSlide{
+    from{opacity:0;transform:translateY(60px) scale(0.9);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+.card:hover{
+    transform:translateY(-25px) scale(1.05);
+    box-shadow:0 40px 80px rgba(0,0,0,0.6),0 0 40px rgba(0,212,255,0.4);
+    border-color:rgba(0,212,255,0.6);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    transition:all 0.6s ease;
+}
+
+.card:hover img{
+    transform:scale(1.1);
+    filter:brightness(1.1) contrast(1.1);
+}
+
+.card-content{
+    padding:25px;
+    text-align:center;
+}
+
+.card h2{
+    font-size:1.8rem;
+    margin-bottom:1rem;
+    background:linear-gradient(45deg,#fff,#00d4ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+.card p{
+    font-size:1.1rem;
+    line-height:1.6;
+    opacity:0.9;
+}
+
+/* Button */
+.btn-area{
+    text-align:center;
+    margin:60px 0;
+    position:relative;
+    z-index:10;
+}
+
+button{
+    padding:18px 50px;
+    border:none;
+    border-radius:50px;
+    font-size:1.3rem;
+    font-weight:600;
+    cursor:pointer;
+    background:linear-gradient(45deg,#00d4ff,#667eea);
+    color:#fff;
+    box-shadow:0 15px 40px rgba(0,212,255,0.4);
+    transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    position:relative;
+    overflow:hidden;
+}
+
+button::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+    transition:left 0.7s;
+}
+
+button:hover::before{
+    left:100%;
+}
+
+button:hover{
+    transform:translateY(-8px) scale(1.08);
+    box-shadow:0 25px 60px rgba(0,212,255,0.6);
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:40px 20px;
+    background:rgba(0,0,0,0.2);
+    backdrop-filter:blur(20px);
+    margin-top:60px;
+    position:relative;
+    z-index:10;
+}
+
+footer b{
+    background:linear-gradient(45deg,#00d4ff,#fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .container{grid-template-columns:1fr;gap:30px;padding:40px 15px;}
+    header{padding:60px 15px;}
+    .hero img{width:90%;}
+}
+</style>
+</head>
+
+<body>
+<div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
+
+<header>
+    <h1>🎨 Ultimate Animated Web Page 🎨</h1>
+    <p>✨ Advanced Animations • Glassmorphism • Particles • 2025 Design ✨</p>
+</header>
+
+<div class="hero">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Creative Hero">
+</div>
+
+<section class="container">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1558618047-3c8c76fdd179?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Programming">
+        <div class="card-content">
+            <h2>💻 Programming</h2>
+            <p>Modern web development with HTML5, CSS3 animations, JavaScript effects, and responsive design patterns.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Creative Design">
+        <div class="card-content">
+            <h2>🎨 Web Design</h2>
+            <p>Glassmorphism effects, gradient backgrounds, hover animations, and modern UI/UX principles for 2025.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Technology">
+        <div class="card-content">
+            <h2>🚀 Technology</h2>
+            <p>Advanced CSS animations, particle systems, backdrop filters, and hardware-accelerated transforms at 60fps.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Innovation">
+        <div class="card-content">
+            <h2>🌟 Innovation</h2>
+            <p>Creative coding projects with real-time effects, interactive elements, and cutting-edge web technologies.</p>
+        </div>
+    </div>
+</section>
+
+<div class="btn-area">
+    <button onclick="showMessage()">
+        🚀 Explore Advanced Features
+    </button>
+</div>
+
+<footer>
+    Designed & Developed by <b>Harithi</b> • Srīperumbūdūr, Tamil Nadu • 2025 [web:19][memory:1]
+</footer>
+
+<script>
+function showMessage(){
+    const colors = ['#00d4ff','#667eea','#f093fb','#f5576c','#4facfe'];
+    const message = document.createElement('div');
+    message.style.cssText = `
+        position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+        background:linear-gradient(45deg,${colors[0]},${colors[1]});
+        color:white;padding:3rem 4rem;border-radius:30px;
+        font-size:1.5rem;font-weight:700;text-align:center;
+        box-shadow:0 30px 80px rgba(0,0,0,0.6);backdrop-filter:blur(20px);
+        border:3px solid rgba(255,255,255,0.3);z-index:10000;
+        animation:pulseIn 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    `;
+    message.innerHTML = '🌟 Welcome to the Ultimate Animated Web Page! <br>✨ 25+ Advanced Effects • Pure CSS • 60fps ✨';
+    document.body.appendChild(message);
+    
+    setTimeout(()=>{
+        message.style.animation = 'pulseOut 0.6s cubic-bezier(0.25,0.46,0.45,0.94) forwards';
+        setTimeout(()=>message.remove(),600);
+    },2500);
+}
+
+// Add keyframes dynamically
+const style = document.createElement('style');
+style.textContent = `
+@keyframes pulseIn{from{opacity:0;transform:translate(-50%,-50%) scale(0.5);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
+@keyframes pulseOut{from{opacity:1;transform:translate(-50%,-50%) scale(1);}to{opacity:0;transform:translate(-50%,-50%) scale(0.8);}}
+`;
+document.head.appendChild(style);
+
+// Mouse parallax for hero image
+document.addEventListener('mousemove',(e)=>{
+    const img = document.querySelector('.hero img');
+    const x = (e.clientX/window.innerWidth)*10;
+    const y = (e.clientY/window.innerHeight)*10;
+    img.style.transform = `scale(1.05) translate(${x}px,${y}px)`;
+});
+</script>
+
+</body>
+</html>
