@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inline and Internal CSS Example</title>
+  
+  <!-- Internal CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      background-color: #444;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ff9800;
+    }
+
+    section {
+      padding: 20px;
+      background: white;
+      margin: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Web Page</h1>
+    <p>Using Inline and Internal CSS</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Gallery</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <section>
+    <h2 style="color: darkblue; text-decoration: underline;">Inline Styled Heading</h2>
+    <p style="font-size: 18px; color: green;">
+      This paragraph uses <strong>inline CSS</strong> to change its font size and color.
+    </p>
+    <p>
+      Meanwhile, the rest of the page is styled using <strong>internal CSS</strong> defined in the head section.
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 My Web Page | Designed with Inline + Internal CSS</p>
+  </footer>
+</body>
+</html>
